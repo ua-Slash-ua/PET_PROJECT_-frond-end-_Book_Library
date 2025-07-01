@@ -1,0 +1,22 @@
+.menu_item {
+    border-radius: 15px;
+    background-color: rgb(129, 129, 226);
+    padding: 1vh 2vw;
+    margin: 0 2vw;
+    color: #000000;
+    font-weight: bold;
+    display: inline-block; /* важливо для transform */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.menu_item:hover {
+    transform: translate(0, -5px);
+    background-color: rgb(150, 150, 223);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+
+.active {
+    border: 3px solid rgb(160, 160, 222);
+    background-color: rgb(96, 96, 223);
+}
