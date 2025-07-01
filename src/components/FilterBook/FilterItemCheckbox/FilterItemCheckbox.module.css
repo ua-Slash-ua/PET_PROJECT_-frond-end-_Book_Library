@@ -1,0 +1,28 @@
+.catalog_filter_head{
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    margin-left: 1vw;
+    padding-right: 4vw;
+    width: 80%;
+    justify-content: space-between;
+}
+
+.catalog_filter_options{
+    display: flex;
+    flex-direction: column;
+}
+.catalog_filter_option{
+    display: flex;
+    flex-direction: row;
+    margin-left: 2vw;
+}
+.catalog_filter_checkbox{
+    width: 1.2em;
+    height: 1.2em;
+    margin-right: 0.8em;
+    border: 2px solid #7f77ee;
+    border-radius: 4px;
+    background-color: white;
+    cursor: pointer;
+}

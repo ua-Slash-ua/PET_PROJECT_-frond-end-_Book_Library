@@ -1,0 +1,38 @@
+.catalog_filter{
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    background-color: #7f77ee;
+    padding: 1vh 1vw;
+}
+.catalog_filter_title{
+    width: 100%;
+    margin: 2vh 2vw;
+}
+.catalog_filter input[type='text']{
+    width: 80%;
+    background-color: #c0c0c0;
+    margin: 1vh 0.5vw;
+    padding: 0.5vh 1vw;
+    border-radius: 15px;
+}
+.catalog_filter input[type='text']::placeholder{
+    color: rgba(0, 0, 0, 0.86);
+}
+.catalog_filter_action{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2vh 2vw 1vh 2vw;
+
+}
+
+.catalog_filter_search{
+    background-color: #342ac2;
+    padding:0.5vh 1vw ;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    border: 2px solid #beb5ff;
+}

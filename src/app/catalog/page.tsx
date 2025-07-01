@@ -1,11 +1,18 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-import NewsBlock from "@/components/News/NewsBlock";
+import styles from "./Catalog.module.css";
+import FilterBook from "@/components/FilterBook/FilterBook";
+
 
 export default function Catalog() {
-  return (
-    <div>
-      Catalog
-    </div>
-  );
+    return (
+        <div className={styles.catalog}>
+            <div className={styles.catalog_hero}>
+                <h1 className={styles.catalog_title}>
+                    Каталог книг для справжніх читачів
+                </h1>
+            </div>
+            <div className={styles.catalog_content}>
+                <FilterBook/>
+            </div>
+        </div>
+    );
 }

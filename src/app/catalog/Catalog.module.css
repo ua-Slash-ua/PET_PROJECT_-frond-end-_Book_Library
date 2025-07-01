@@ -1,0 +1,36 @@
+.catalog {
+    width: 100vw;
+    min-height: 30vh;
+    background: linear-gradient(180deg, #7f77ee, #d0fffe);
+    display: flex;
+    flex-direction: column;
+
+}
+
+.catalog_hero {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.catalog_title {
+    justify-content: center;
+    background: linear-gradient(180deg, #7f77ee, #d0fffe);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    display: block;
+    padding: 0.5em 1em;
+    color: #000000;
+    font-size: 2vw;
+    white-space: nowrap;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+
+}
+
+.catalog_content {
+    width: 100vw;
+    background-color: green;
+    min-height: 10vh;
+}
