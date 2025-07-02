@@ -7,6 +7,7 @@
 
 }
 
+
 .catalog_hero {
     width: 100vw;
     display: flex;
@@ -33,4 +34,12 @@
     width: 100vw;
     background-color: green;
     min-height: 10vh;
+    display: flex;
+    flex-direction: row;
+}
+.catalog_list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 колонки */
+    gap: 1.5rem; /* відступи між картками */
+    padding: 1rem;
 }

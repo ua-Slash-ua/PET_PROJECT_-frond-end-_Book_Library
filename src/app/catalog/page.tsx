@@ -1,8 +1,28 @@
+'use client'
 import styles from "./Catalog.module.css";
 import FilterBook from "@/components/FilterBook/FilterBook";
+import CardBook, {Book} from "@/components/CardBook/CardBook";
+import {useEffect, useState} from "react";
+import {getBook} from "@/api/getBooks";
 
 
 export default function Catalog() {
+    const [books, setBooks] = useState<Book[]>([]);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        async function fetchBooks() {
+            const result = await getBook();
+            console.log(result)
+            if (typeof result === 'string') {
+                setError(result); // якщо повернено повідомлення про помилку
+            } else {
+                setBooks(result);
+            }
+        }
+
+        fetchBooks();
+    }, []);
     return (
         <div className={styles.catalog}>
             <div className={styles.catalog_hero}>
@@ -12,7 +32,13 @@ export default function Catalog() {
             </div>
             <div className={styles.catalog_content}>
                 <FilterBook/>
+                <div className={styles.catalog_list}>
+                    {books.map((book, index) => (
+                        <CardBook key={index} book={book}/>
+                    ))}
+                </div>
             </div>
+
         </div>
     );
 }
