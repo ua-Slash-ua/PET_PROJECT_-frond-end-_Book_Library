@@ -4,7 +4,7 @@ import {useState} from "react";
 
 type filterItemProps = {
     name: string
-    options: string[]
+    options: Record<string, number>;
 }
 export default function FilterItemCheckbox({name, options}: filterItemProps) {
     const [isOpen, setIsOpen] = useState(false);
@@ -33,15 +33,29 @@ export default function FilterItemCheckbox({name, options}: filterItemProps) {
                 </div>
 
             </div>
+
             {isOpen &&
                 (<div className={styles.catalog_filter_options}>
-                    {options.map((option) => (
-                        <label key={option} htmlFor={'checkbox_' + option} className={styles.catalog_filter_option}>
-                            <input type="checkbox" name={'checkbox_' + option} className={styles.catalog_filter_checkbox} value={option}/>
-                            {option}
+
+                    {Object.entries(options).map(([key, value]) => (
+                        <label
+                            key={key}
+                            htmlFor={'checkbox_' + key}
+                            className={styles.catalog_filter_option}
+                        >
+                            <input
+                                type="checkbox"
+                                name={'checkbox_' + key}
+                                className={styles.catalog_filter_checkbox}
+                                value={key}
+                            />
+                            {key} ({value})
                         </label>
                     ))}
-                </div>)}
+
+
+                </div>)
+            }
         </div>
     )
 }

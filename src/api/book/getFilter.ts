@@ -1,6 +1,6 @@
-export async function getBook() {
+export async function getFilter(label:'author'| 'genre'){
     try {
-        const response = await fetch('http://localhost:5000/book'); // або process.env["BACKEND"]
+        const response = await fetch(`http://localhost:5000/book/${label}`); // або process.env["BACKEND"]
 
         if (!response.ok) {
             return `Помилка: статус ${response.status}`;
@@ -9,7 +9,7 @@ export async function getBook() {
         const data = await response.json();
 
         if (!data || data.length === 0) {
-            return `Помилка отримання книг або пустий список`;
+            return `Помилка отримання фільтру книг ${label} або пустий фільтр!`;
         }
 
         return data.data;

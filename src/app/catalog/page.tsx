@@ -3,7 +3,7 @@ import styles from "./Catalog.module.css";
 import FilterBook from "@/components/FilterBook/FilterBook";
 import CardBook, {Book} from "@/components/CardBook/CardBook";
 import {useEffect, useState} from "react";
-import {getBook} from "@/api/getBooks";
+import {getBook} from "@/api/book/getBooks";
 
 
 export default function Catalog() {
@@ -13,7 +13,9 @@ export default function Catalog() {
     useEffect(() => {
         async function fetchBooks() {
             const result = await getBook();
+            console.log(123)
             console.log(result)
+            console.log(123)
             if (typeof result === 'string') {
                 setError(result); // якщо повернено повідомлення про помилку
             } else {
