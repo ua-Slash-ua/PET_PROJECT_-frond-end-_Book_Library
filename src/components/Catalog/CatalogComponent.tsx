@@ -1,10 +1,24 @@
 import styles from "@/app/catalog/Catalog.module.css";
 import FilterBook from "@/components/FilterBook/FilterBook";
 import CardBook, {Book} from "@/components/CardBook/CardBook";
+import {useEffect, useState} from "react";
+import {getBook} from "@/api/book/getBooks";
+import {FilterQuery} from "@/utils/buildurl";
 interface CatalogProps {
     books: Book[]
 }
-export default function Catalog({books}:CatalogProps){
+export default function CatalogComponent({books}:CatalogProps){
+    const [bookList, setBookList] = useState<Book[]>([]);
+
+    useEffect(() => {
+        setBookList(books);
+    }, [books]);
+    async function updateBooks(filter:FilterQuery){
+        let result = await getBook(filter)
+        if (result){
+            setBookList(result)
+        }
+    }
     return (
         <div className={styles.catalog}>
             <div className={styles.catalog_hero}>
@@ -13,9 +27,9 @@ export default function Catalog({books}:CatalogProps){
                 </h1>
             </div>
             <div className={styles.catalog_content}>
-                <FilterBook/>
+                <FilterBook onSearch={updateBooks}/>
                 <div className={styles.catalog_list}>
-                    {books.map((book, index) => (
+                    {bookList.map((book, index) => (
                         <CardBook key={index} book={book}/>
                     ))}
                 </div>

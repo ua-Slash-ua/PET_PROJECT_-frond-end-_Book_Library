@@ -1,7 +1,7 @@
 import {PAGES} from "@/config/pages.config";
-import {MenuItem} from "@/types/meny.types";
+import {typeMenuItem} from "@/types/meny.types";
 
-export const MenuItems:MenuItem[] = [
+export const MenuItems:typeMenuItem[] = [
     {
         name:'Головна',
         href:PAGES.HOME

@@ -1,15 +1,23 @@
-export function buildUrl(base: string, query: Record<string, string[]>) {
+import {FilterBookProps} from "@/components/FilterBook/FilterBook";
+
+export type FilterQuery = Record<string, string | string[]>;
+
+export function buildUrl(base: string, query: FilterQuery) {
     const params = new URLSearchParams();
 
     for (const key in query) {
-        const values = query[key];
-        values.forEach((value) => {
+        const value = query[key];
+
+        if (Array.isArray(value)) {
+            value.forEach((v) => params.append(key, v));
+        } else if (typeof value === 'string' && value.trim() !== '') {
             params.append(key, value);
-        });
+        }
     }
 
     return `${base}?${params.toString()}`;
 }
+
 
 
 

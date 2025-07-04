@@ -3,15 +3,26 @@ import styles from './FilterItemCheckbox.module.css'
 import {useState} from "react";
 
 type filterItemProps = {
-    name: string
+    name: string;
     options: Record<string, number>;
-}
-export default function FilterItemCheckbox({name, options}: filterItemProps) {
+    selected: string[];
+    onChange: (selected: string[]) => void;
+};
+export default function FilterItemCheckbox({name, options, selected, onChange}: filterItemProps) {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleFilter = () => {
         setIsOpen(prev => !prev);
     };
+
+    const handleCheckboxChange = (value: string) => {
+        if (selected.includes(value)) {
+            onChange(selected.filter(item => item !== value));
+        } else {
+            onChange([...selected, value]);
+        }
+    };
+
     return (
         <div className={styles.catalog_filter}>
             <div className={styles.catalog_filter_head} onClick={toggleFilter}>
@@ -31,31 +42,26 @@ export default function FilterItemCheckbox({name, options}: filterItemProps) {
                         <polyline points="6 9 12 15 18 9"/>
                     </svg>
                 </div>
-
             </div>
 
-            {isOpen &&
-                (<div className={styles.catalog_filter_options}>
-
+            {isOpen && (
+                <div className={styles.catalog_filter_options}>
                     {Object.entries(options).map(([key, value]) => (
-                        <label
-                            key={key}
-                            htmlFor={'checkbox_' + key}
-                            className={styles.catalog_filter_option}
-                        >
+                        <label key={key} htmlFor={`checkbox_${key}`} className={styles.catalog_filter_option}>
                             <input
                                 type="checkbox"
-                                name={'checkbox_' + key}
+                                id={`checkbox_${key}`}
+                                name={`checkbox_${key}`}
                                 className={styles.catalog_filter_checkbox}
                                 value={key}
+                                checked={selected.includes(key)}
+                                onChange={() => handleCheckboxChange(key)}
                             />
                             {key} ({value})
                         </label>
                     ))}
-
-
-                </div>)
-            }
+                </div>
+            )}
         </div>
-    )
+    );
 }

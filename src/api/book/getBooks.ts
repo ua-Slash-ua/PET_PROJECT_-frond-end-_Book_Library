@@ -1,10 +1,8 @@
-import {buildUrl} from "@/utils/buildurl";
+import {buildUrl, FilterQuery} from "@/utils/buildurl";
 
-export async function getBook() {
+export async function getBook(filter:FilterQuery) {
     try {
-        const url = buildUrl('http://localhost:5000/book', {
-            genre: ['Fantasy',"Classic",'Dystopian'],
-        });
+        const url = buildUrl('http://localhost:5000/book', filter);
         const response = await fetch(url);
         if (!response.ok) {
             return `Помилка: статус ${response.status}`;
