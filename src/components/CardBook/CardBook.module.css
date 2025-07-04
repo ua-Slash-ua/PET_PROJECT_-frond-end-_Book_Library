@@ -3,6 +3,7 @@
     height: 40vh;
     background-color: #beb5ff;
     position: relative;
+    border: 3px solid rgb(192, 1, 255);
 }
 
 .cart_item_image {

@@ -32,7 +32,6 @@
 
 .catalog_content {
     width: 100vw;
-    background-color: green;
     min-height: 10vh;
     display: flex;
     flex-direction: row;

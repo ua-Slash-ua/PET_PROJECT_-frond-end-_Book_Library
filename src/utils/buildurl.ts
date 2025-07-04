@@ -1,6 +1,5 @@
-import {FilterBookProps} from "@/components/FilterBook/FilterBook";
 
-export type FilterQuery = Record<string, string | string[]>;
+export type FilterQuery = Record<string, string | number | string[]>;
 
 export function buildUrl(base: string, query: FilterQuery) {
     const params = new URLSearchParams();
@@ -10,13 +9,20 @@ export function buildUrl(base: string, query: FilterQuery) {
 
         if (Array.isArray(value)) {
             value.forEach((v) => params.append(key, v));
-        } else if (typeof value === 'string' && value.trim() !== '') {
+        } else if (
+            typeof value === 'string' && value.trim() !== ''
+        ) {
             params.append(key, value);
+        } else if (
+            typeof value === 'number' && !isNaN(value)
+        ) {
+            params.append(key, value.toString());
         }
     }
 
     return `${base}?${params.toString()}`;
 }
+
 
 
 
