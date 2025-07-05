@@ -7,6 +7,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+
 export default function NewsBlock() {
     const [books, setBooks] = useState<Book[]>([])
     const [error, setError] = useState(false)
